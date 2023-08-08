@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"io/ioutil"
 	"os"
+	"path"
 
 	flag "github.com/spf13/pflag"
 )
@@ -16,10 +17,17 @@ var (
 	flagKeyFile string
 )
 
+var Version = "*unset*"
+
 func init() {
 	flag.StringVarP(&flagInput, "input-file", "i", "", "input-file name")
 	flag.StringVarP(&flagOutput, "output-file", "o", "", "output-file name")
 	flag.StringVarP(&flagKeyFile, "key-file", "k", "", "key-file name")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "USAGE of %s (%s):\n", path.Base(os.Args[0]), Version)
+		flag.PrintDefaults()
+	}
+
 }
 
 func main() {
