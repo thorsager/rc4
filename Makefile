@@ -16,7 +16,7 @@ build:
 all:
 	$(foreach GOOS, $(PLATFORMS),\
 	$(foreach GOARCH, $(ARCHITECTURES),\
-	$(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); go build -v ${LDFLAGS} -o $(BINARY)+$(GOOS)-$(GOARCH) main.go)\
+	$(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); go build -v ${LDFLAGS} -o $(BINARY)-$(VERSION)+$(GOOS)-$(GOARCH) main.go)\
 	))
 
 
